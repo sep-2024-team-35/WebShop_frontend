@@ -1,0 +1,15 @@
+<div class="wrapper">
+  <div class="inner-wrap">
+    
+    <h6> Telekom </h6>
+ 
+
+    <div class="reg-user"></div>
+
+    <div class="buttons">
+      <a raised-button *ngIf="isLogged" routerLinkActive="active" [routerLink]="['home']" class="link">Home</a>
+      <button class="nbuttonEnd" *ngIf="!isLogged" (click)="login()">Login</button>
+      <button class="nbuttonEnd" *ngIf="isLogged" (click)="login()">Logout</button>
+    </div>
+  </div>
+</div>

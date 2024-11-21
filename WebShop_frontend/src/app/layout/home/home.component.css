@@ -1,0 +1,113 @@
+.home-container {
+    position: relative;
+    height: 50vh; /* Pokriva 50% visine ekrana */
+    background-color: #55785b; /* Zelena pozadina */
+    color: white; /* Bela boja teksta za kontrast */
+    display: flex;
+    align-items: center; /* Vertikalno centriranje sadržaja */
+    justify-content: center; /* Horizontalno centriranje sadržaja */
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box; /* Uključuje padding u ukupnu visinu */
+    flex-direction: column;
+  }
+  
+  .intro-section, .advertisement-section {
+    max-width: 800px;
+  }
+  
+  .cta-button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #27ae60;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+  .cta-button:hover {
+    background-color: #2ecc71;
+  }
+
+  .completed-campaigns-section {
+    background-color: #ffffff; /* Bela pozadina */
+    padding: 40px 20px;
+    text-align: center;
+    color: #333; /* Tamniji tekst za kontrast */
+  }
+  
+  .completed-campaigns-section h2 {
+    margin-bottom: 30px;
+    font-size: 2em;
+    color: #55785b; /* Tamno zelena boja naslova */
+  }
+  
+  /* Kontejner za karusel */
+  .carousel-container {
+    position: relative;
+    width: 800px; /* Širina karusela */
+    overflow: hidden; /* Sakriva deo koji izlazi izvan granica karusela */
+    margin: 0 auto; /* Centriranje karusela */
+  }
+  
+  .carousel-wrapper {
+    display: flex;
+    width: 100%;
+  }
+  
+  .carousel-slide {
+    display: flex;
+    transition: transform 0.3s ease; /* Glatka animacija pri pomeranju */
+  }
+  
+  .campaign-card {
+    background-color: #f9f9f9; /* Svetlo siva pozadina kartice */
+    border: 1px solid #ddd; /* Tanak obrub */
+    border-radius: 8px; /* Zaobljeni uglovi */
+    padding: 20px;
+    width: 750px; /* Širina kartice koja se prikazuje */
+    height: 400px; /* Visina kartice */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Blaga senka */
+    flex-shrink: 0; /* Sprečava da se kartica smanjuje */
+  }
+  
+  .card-image img {
+    width: 50%; /* Slika zauzima celu širinu kartice */
+    height: 50%; /* Automatska visina */
+    border-radius: 8px 8px 0 0; /* Zaobljeni uglovi samo na vrhu */
+  }
+  
+  .card-content {
+    padding: 10px;
+  }
+  
+  .card-description {
+    display: none; /* Početno stanje je da opis bude skriven */
+    color: #666; /* Siva boja teksta */
+  }
+  
+  .campaign-card:hover .card-description {
+    display: block; /* Prikazuje opis pri prelasku preko kartice */
+  }
+  
+  /* Stil za strelice */
+  .carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.8); /* Poluprovidna pozadina za strelice */
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 24px;
+    z-index: 10; /* Postavlja strelice iznad kartica */
+  }
+  
+  .carousel-button.left {
+    left: 10px;
+  }
+  
+  .carousel-button.right {
+    right: 10px;
+  }
+  

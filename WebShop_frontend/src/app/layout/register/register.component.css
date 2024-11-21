@@ -1,0 +1,154 @@
+.wrap {
+   
+    width: 100%;
+    background-color: #55785b; /* Zelena pozadina */
+  
+    min-height: 400px;
+    background-size: cover; /* Pokriva ceo prostor */
+    background-position: center; /* Centriranje slike */
+    background-repeat: no-repeat; /* Ne ponavljaj sliku */
+  }
+  
+  .form-wrap {
+    display: flex;
+    flex-direction: column;
+  
+    gap: 20px;
+  
+    padding: 250px;
+    align-items: center;
+  }
+  
+  .login-options {
+    margin-top: 5px;
+    text-align: center;
+  }
+  
+  .login-text {
+    font-size: 18px;
+    color: #fff;
+  }
+  
+  .passwordless-login a {
+    color: #fff;
+    text-decoration: underline;
+  }
+  
+  .passwordless-login a:hover {
+    color: #ddd; /* Change the color on hover as per your design */
+  }
+  
+  
+  .first-form {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+  }
+  
+  .button1 {
+    margin-left: 0px;
+    border-radius: 8px;
+    background-color: #27ae60;
+    color: #ffffff;
+    padding: 5px 10px;
+    width: 360px;
+    height: 50px;
+    font-style: "Gill Sans Extrabold", sans-serif;
+    font-size: 18px;
+  }
+  
+  .title {
+    font-size: 1.7em;
+    text-transform: uppercase;
+    color: #084d4f;
+    font-style: "Gill Sans Extrabold", sans-serif;
+    background-color: rgba(246, 245, 245, 0.8);
+    border-radius: 10px;
+  
+    padding: 5px 10px;
+    margin-top: 5px;
+  }
+  
+  .account {
+    color: rgb(12, 12, 12);
+    font-size: 17px;
+    text-align: left;
+  }
+  
+  .inner-wrap {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-right: 20px;
+  }
+  
+  .link {
+    color: #0f3031;
+    font-size: 17px;
+  }
+  
+  .link:hover {
+    color: #084d4f;
+  }
+  
+  .container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+  }
+  
+  h2 {
+    text-align: center;
+    color: #333333;
+  }
+  form {
+    text-align: center;
+  }
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555555;
+    text-align: left;
+  }
+  
+  input[type="text"],
+  input[type="password"] {
+    width: 93%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #ffffff;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  a {
+    margin-top: 10px;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  .button-disabled {
+    background-color: #cccccc;
+    color: #777777;
+    cursor: not-allowed;
+    opacity: 0.6;
+    pointer-events: none;
+  }
