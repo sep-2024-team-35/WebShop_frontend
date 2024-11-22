@@ -16,6 +16,7 @@ import { TokenInterceptor } from './TokenInterceptor';
 import { JwtConfigModule } from './jwt-config.module';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { RegisterComponent } from './layout/register/register.component';
+import { ShowServicesPackagesComponent } from './servicesAndPackages/show-services-packages/show-services-packages.component';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -33,7 +34,8 @@ import { RegisterComponent } from './layout/register/register.component';
     NavbarComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ShowServicesPackagesComponent
   ],
   providers: [
     {
