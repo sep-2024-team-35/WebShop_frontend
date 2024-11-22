@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders ,HttpClientModule} from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { BehaviorSubject, map, Observable } from 'rxjs';
-import { Environment } from '../env/environment';
-import { User } from '../model/user.model';
-import { LoginRequest } from '../model/loginRequest.model';
+import { Environment } from '../../env/environment';
+import { LoginRequest } from '../../model/loginRequest.model';
+import { User } from '../../model/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -51,7 +51,7 @@ export class AuthService {
   }
 
   register(user:User):Observable<String>{
-    localStorage.setItem('token','eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuaW5hQGdtYWlsLmNvbSIsImlhdCI6MTczMjIxOTk1NiwiZXhwIjoxNzMyMzA2MzU2fQ.JS_OpVlIUA_7xlqdIa60Ucxy5npJDnAVsTTPSKf6Brv2pKe0v1oCTCT1WAjp41xmAGCoM5kXlmC7VpXo8VLF5w');
+   
     console.log("USER",user)
     const token = localStorage.getItem('token')
     const headers = new HttpHeaders({
