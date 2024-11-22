@@ -84,7 +84,11 @@ export class AuthService {
   }
 
   getUserId(): number {
-    console.log('id',this.userClaims.id)
+    const token = localStorage.getItem('token')
+    if(token){
+      this.userClaims = this.jwtHelper.decodeToken(token);
+    }
+   console.log(this.userClaims.id)
     return this.userClaims.id;
   }
 
