@@ -1,12 +1,18 @@
 .wrap {
    
   width: 100%;
-  background-color: #55785b; /* Zelena pozadina */
-
+  
   min-height: 400px;
   background-size: cover; /* Pokriva ceo prostor */
   background-position: center; /* Centriranje slike */
   background-repeat: no-repeat; /* Ne ponavljaj sliku */
+}
+
+:host {
+  display: block;
+  min-height: 100vh; /* Postavlja minimalnu visinu na 100% visine prozora */
+  background: linear-gradient(to bottom, #3976b4, #abbdd8); /* Plavi gradijent */
+  overflow: hidden; /* Sprečava pojavu skrol trake */
 }
 
 .form-wrap {
@@ -48,7 +54,7 @@
 .button1 {
   margin-left: 0px;
   border-radius: 8px;
-  background-color: #27ae60;
+  background-color: #3e63c9;
   color: #ffffff;
   padding: 5px 10px;
   width: 360px;
