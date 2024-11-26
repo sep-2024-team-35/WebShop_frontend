@@ -18,7 +18,9 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { RegisterComponent } from './layout/register/register.component';
 import { ShowServicesPackagesComponent } from './servicesAndPackages/show-services-packages/show-services-packages.component';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
-import { ResponseComponent } from './layout/response/response.component';
+import { ErrorComponent } from './layout/response/error/error.component';
+import { FailedComponent } from './layout/response/failed/failed.component';
+import { SuccessComponent } from './layout/response/success/success.component';
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 @Component({
   selector: 'app-root',
@@ -41,7 +43,9 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     ShowServicesPackagesComponent,
     //socket config for root
     SocketIoModule,
-    ResponseComponent
+    ErrorComponent,
+    FailedComponent,
+    SuccessComponent
   ],
   providers: [
     {
@@ -66,7 +70,9 @@ export class AppComponent {
   }
 
   initializeWebSockets(){
-    this.setupWebSocket("responses")
+    this.setupWebSocket("success")
+    this.setupWebSocket("error")
+    this.setupWebSocket("failed")
   }
 
   private setupWebSocket(endpoint: string) {
@@ -90,8 +96,12 @@ export class AppComponent {
     webSocket.onmessage = (event) => {
       console.log(`Message from ${endpoint}:`, event.data);
       // Obradi poruku na osnovu endpoint-a
-      if (endpoint === 'responses') {
-        this.handleTransactionMessage(event);
+      if (endpoint === 'success') {
+        this.handleSuccess(event);
+      }else if(endpoint==='failed'){
+          this.handleFailed(event)
+      }else if(endpoint==='error'){
+          this.handleError(event)
       }
     };
 
@@ -105,9 +115,18 @@ export class AppComponent {
     }
   }
 
-  private handleTransactionMessage(event: MessageEvent) {
+  private handleSuccess(event: MessageEvent) {
     console.log(event.data);
-    this.router.navigate(['/response', event.data]);
-   
+    this.router.navigate(['/success']);
+  }
+
+  private handleError(event: MessageEvent) {
+    console.log(event.data);
+    this.router.navigate(['/error']);
+  }
+
+  private handleFailed(event: MessageEvent) {
+    console.log(event.data);
+    this.router.navigate(['/failed']);
   }
 }
