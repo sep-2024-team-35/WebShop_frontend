@@ -14,6 +14,6 @@ export const routes: Routes = [
     {path:'home',component:HomeComponent},
     {path:'services',component:ShowServicesPackagesComponent},
     {path:'success',component:SuccessComponent},
-    {path:'failed',component:FailedComponent},
+    {path:'fail',component:FailedComponent},
     {path:'error',component:ErrorComponent}
 ];

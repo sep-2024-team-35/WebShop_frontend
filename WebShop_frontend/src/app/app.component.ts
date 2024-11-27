@@ -62,20 +62,20 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 export class AppComponent {
   title = 'WebShop';
   private webSocket!: WebSocket;
-  private webSocketClient!: WebSocket;
-  private webSocketResponse!: WebSocket;
+  private webSocketError!: WebSocket;
+  private webSocketFailed!: WebSocket;
 
   constructor(private router:Router){
     this.initializeWebSockets();
   }
 
   initializeWebSockets(){
-    this.setupWebSocket("success")
-    this.setupWebSocket("error")
-    this.setupWebSocket("failed")
+    this.setupWebSocketSuccess("success")
+   // this.setupWebSocketError("error")
+   // this.setupWebSocketFailed("failed")
   }
 
-  private setupWebSocket(endpoint: string) {
+  private setupWebSocketSuccess(endpoint: string) {
     const url = `ws://localhost:8080/${endpoint}`;
     const webSocket = new WebSocket(url);
 
@@ -85,7 +85,7 @@ export class AppComponent {
 
     webSocket.onclose = (event) => {
       console.log(`WebSocket connection to ${endpoint} closed. Reconnecting...`);
-      setTimeout(() => this.setupWebSocket(endpoint), 1000); // Ponovni pokušaj nakon 5 sekundi
+      setTimeout(() => this.setupWebSocketSuccess(endpoint), 1000); // Ponovni pokušaj nakon 5 sekundi
     };
 
     webSocket.onerror = (error) => {
@@ -106,20 +106,79 @@ export class AppComponent {
     };
 
     // Sačuvaj referencu na WebSocket
-    if (endpoint === 'transactions') {
+    if (endpoint === 'success') {
       this.webSocket = webSocket;
-    } else if (endpoint === 'clients') {
-      this.webSocketClient = webSocket;
-    } else if (endpoint === 'responses') {
-      this.webSocketResponse = webSocket;
-    }
+    } 
+  }
+
+  private setupWebSocketError(endpoint: string) {
+    const url = `ws://localhost:8080/${endpoint}`;
+    const webSocket = new WebSocket(url);
+
+    webSocket.onopen = () => {
+      console.log(`WebSocket connection to ${endpoint} established.`);
+    };
+
+    webSocket.onclose = (event) => {
+      console.log(`WebSocket connection to ${endpoint} closed. Reconnecting...`);
+      setTimeout(() => this.setupWebSocketError(endpoint), 1000); // Ponovni pokušaj nakon 5 sekundi
+    };
+
+    webSocket.onerror = (error) => {
+      console.error(`WebSocket error on ${endpoint}:`, error);
+      webSocket.close(); // Zatvori konekciju da bi se pokrenuo onclose handler
+    };
+
+    webSocket.onmessage = (event) => {
+      console.log(`Message from ${endpoint}:`, event.data);
+      // Obradi poruku na osnovu endpoint-a
+      if (endpoint === 'error') {
+        this.handleError(event);
+      }
+    };
+
+    // Sačuvaj referencu na WebSocket
+    if (endpoint === 'error') {
+      this.webSocketError = webSocket;
+    } 
+  }
+  private setupWebSocketFailed(endpoint: string) {
+    const url = `ws://localhost:8080/${endpoint}`;
+    const webSocket = new WebSocket(url);
+
+    webSocket.onopen = () => {
+      console.log(`WebSocket connection to ${endpoint} established.`);
+    };
+
+    webSocket.onclose = (event) => {
+      console.log(`WebSocket connection to ${endpoint} closed. Reconnecting...`);
+      setTimeout(() => this.setupWebSocketFailed(endpoint), 1000); // Ponovni pokušaj nakon 5 sekundi
+    };
+
+    webSocket.onerror = (error) => {
+      console.error(`WebSocket error on ${endpoint}:`, error);
+      webSocket.close(); // Zatvori konekciju da bi se pokrenuo onclose handler
+    };
+
+    webSocket.onmessage = (event) => {
+      console.log(`Message from ${endpoint}:`, event.data);
+      // Obradi poruku na osnovu endpoint-a
+      if (endpoint === 'failed') {
+        this.handleFailed(event);
+      }
+    };
+
+    // Sačuvaj referencu na WebSocket
+    if (endpoint === 'failed') {
+      this.webSocketFailed = webSocket;
+    } 
   }
 
   private handleSuccess(event: MessageEvent) {
-    console.log(event.data);
-    this.router.navigate(['/success']);
+    const lowerCaseData = event.data.toLowerCase(); 
+    console.log(lowerCaseData);
+    this.router.navigate(['/', lowerCaseData]); 
   }
-
   private handleError(event: MessageEvent) {
     console.log(event.data);
     this.router.navigate(['/error']);
