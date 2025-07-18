@@ -4,7 +4,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { User } from '../../model/user.model';
 import { Router } from '@angular/router';
 import { MatInputModule } from '@angular/material/input';
-import { AuthService } from '../../service/auth.service';
+import { AuthService } from '../../service/auth/auth.service';
 import { LoginRequest } from '../../model/loginRequest.model';
 
 
@@ -49,7 +49,7 @@ export class LoginComponent {
 
     this.authService.login(this.user).subscribe({
       next:(res)=>{
-       
+       this.router.navigate(['services'])
       },
       error:(err)=>{
         console.log(err)

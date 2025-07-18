@@ -4,7 +4,7 @@ import { User } from '../../model/user.model';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { Router } from '@angular/router';
 import { MatInputModule } from '@angular/material/input';
-import { AuthService } from '../../service/auth.service';
+import { AuthService } from '../../service/auth/auth.service';
 
 @Component({
   selector: 'app-register',

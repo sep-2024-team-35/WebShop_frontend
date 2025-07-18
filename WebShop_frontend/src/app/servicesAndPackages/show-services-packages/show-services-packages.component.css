@@ -1,0 +1,166 @@
+
+:host {
+    display: block;
+    min-height: 100vh; /* Postavlja minimalnu visinu na 100% visine prozora */
+    background: linear-gradient(to bottom, #3976b4, #abbdd8); /* Plavi gradijent */
+    overflow: hidden; /* Sprečava pojavu skrol trake */
+}
+
+.title {
+    text-align: center;
+    font-size: 3rem; /* Veći font za naslov */
+    font-weight: bold; /* Podebljan tekst */
+    color: white; /* Bela boja teksta */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Senka za bolju vidljivost na slici */
+    margin-top: 20px;
+}
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr); /* Tačno 5 kolona */
+      gap: 20px; /* Razmak između kartica */
+      padding: 20px; /* Dodatni prostor oko kartica unutar kontejnera */
+      height: 100%; /* Zauzimanje cele visine roditeljskog elementa (tj. tela) */
+    }
+    .services-title{
+        text-align: center;
+        font-size: xx-large;
+        font-family: sans-serif;
+
+    }
+    .card {
+      margin-top: 20px;
+      background-color:  white;
+      border-radius: 10px; /* Zaobljeni uglovi */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Blaga senka za efekt dubine */
+      padding: 20px; /* Unutrašnji prostor unutar kartice */
+      max-width: 100%; /* Maksimalna širina kartice */
+      
+    }
+    .nbuttonEnd {
+      padding-right: 10px;
+      height: 5%;
+      font-size: 22px;
+      font-family: Georgia, serif;
+      font-weight: medium;
+      margin-left: 20px;
+      margin-top: 30px;
+      border: none;
+      border-radius: 4px;
+      background-color: #fffdd0;
+      cursor: pointer;
+      text-align: center;
+    }
+  
+    .title{
+      text-align: center;
+    }
+  
+    .progress-bar-container {
+      margin-top: 20px; /* Razmak između sadržaja i progress bara */
+      width: 100%;
+      background-color: #f3f3f3; /* Pozadina progress bara */
+      border-radius: 5px;
+      overflow: hidden; /* Da bi se zaobljeni krajevi videli */
+      height: 10px; /* Visina progress bara */
+    }
+    
+    .progress-bar {
+      height: 100%;
+      background-color: #4caf50; /* Boja progress bara */
+      transition: width 0.3s ease; /* Efekat prelaza */
+    }
+    
+    .donate-button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #0b5baa; /* Boja dugmeta */
+      color: white;
+      border: none;
+      border-radius: 20px; /* Zaobljeni uglovi dugmeta */
+      cursor: pointer;
+      font-size: 16px;
+    }
+    
+    .donate-button:hover {
+      background-color: #4b80b5; /* Tamnija nijansa pri prelazu miša */
+    }
+    .categories-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 20px 0;
+    }
+    
+    .category {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 80px;
+      height: 80px;
+      margin: 10px;
+      background-color: #fffdd0;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+    
+    .category:hover {
+      transform: scale(1.1);
+    }
+    
+    .category-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+    
+    .category-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block; /* Ensures the image does not have any extra spacing */
+      max-height: 100%; /* Ensures the image fits within the container */
+    }
+    
+    
+    .large-emoji {
+      font-size: 3rem; /* Možete koristiti `em`, `px`, `rem` ili `vw` za prilagodbu */
+    }
+    
+    
+    .campaign-image {
+      width: 100%;
+      height: 150px;
+      border-radius: 8px;
+      object-fit: cover; /* Obezbeđuje da slika ne bude izobličena */
+    }
+  
+    .more-details-link {
+      color: blue; /* Plava boja */
+      text-decoration: underline; /* Podvlačenje teksta */
+      font-style: italic; /* Iskošen tekst */
+      cursor: pointer; /* Promena kursora kao kod linka */
+  }
+  
+  .services-container {
+    display: flex; /* Aktivira flexbox za horizontalno poređivanje */
+    gap: 20px; /* Razmak između stavki */
+    overflow-x: auto; /* Omogućava horizontalno skrolovanje ako ima previše usluga */
+    padding: 10px 0; /* Dodaje malo razmaka oko usluga */
+  }
+  
+  .service-card {
+    background-color: #f9f9f9; /* Svetlo siva pozadina */
+    padding: 10px; /* Unutrašnji razmak za bolju preglednost */
+    border-radius: 5px; /* Zaobljeni uglovi */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Blaga senka */
+    min-width: 150px; /* Minimalna širina svake usluge */
+    flex: 0 0 auto; /* Sprečava da stavke zauzmu više prostora nego što im treba */
+    text-align: center; /* Centriran tekst unutar svake usluge */
+  }
