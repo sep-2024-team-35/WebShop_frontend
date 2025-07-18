@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Environment } from '../../env/environment';
 import { Package } from '../../model/package.model';
 import { PaymentRequest } from '../../model/paymentRequest.model';
+import { SubscriptionRequest } from '../../model/subscription';
 
 @Injectable({
   providedIn: 'root'
@@ -45,5 +46,16 @@ export class ServicesPackagesService {
       'Content-Type': 'application/json',
     });
     return this.http.post(this.apiUrl + 'payments/buy',request,{headers});
+  }
+
+  subscribeToService(request:SubscriptionRequest){
+    const token = localStorage.getItem('token')
+    console.log(request)
+    console.log(token)
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer ' + token,
+      'Content-Type': 'application/json',
+    });
+    return this.http.post(this.apiUrl + 'subscriptions/subscribe',request,{headers});
   }
 }

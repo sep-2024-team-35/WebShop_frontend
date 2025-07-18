@@ -6,6 +6,7 @@ import { Package } from '../../model/package.model';
 import { CommonModule, NgFor } from '@angular/common';
 import { PaymentRequest } from '../../model/paymentRequest.model';
 import { FormsModule, NgModel } from '@angular/forms'; 
+import { SubscriptionRequest } from '../../model/subscription';
 @Component({
   selector: 'app-show-services-packages',
   standalone: true,
@@ -31,7 +32,15 @@ export class ShowServicesPackagesComponent {
   }
   userId!: number
 
-  
+  subscription: SubscriptionRequest = {
+  userId: 0,
+  serviceId: 0,
+  durationInYears: 1
+
+};
+selectedServiceId: number | null = null;
+durationInYears: number | null = null;
+
   constructor(private servicesPackagesService: ServicesPackagesService,private authService: AuthService) {
     this.getAllServices()
     this.getAllPackages()
@@ -105,5 +114,30 @@ export class ShowServicesPackagesComponent {
     })
   }
 
+  
+
+selectService(serviceId: number): void {
+  this.selectedServiceId = serviceId;
+  this.durationInYears = 1;
+}
+
+
+subscribeToService(service: any): void {
+  console.log('Subscribing to service:', service);
+  
+   this.subscription.userId= this.authService.getUserId()
+    this.subscription.serviceId=service.id
+    if(this.durationInYears != null){
+      this.subscription.durationInYears = this.durationInYears;
+    }
+    console.log("POSLATIII subbb",this.subscription)
+      this.servicesPackagesService.subscribeToService(this.subscription).subscribe({
+      next:(response)=>{
+       console.log('uspjesno')
+      },
+      error:(err:any)=>{
+        console.log(err)
+      }
+    })}
 
 }

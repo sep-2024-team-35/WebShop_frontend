@@ -5,20 +5,21 @@
 
 <h3 class="services-title"> Services</h3>
 <div class="grid-container">
-   
-    <div class="card" *ngFor="let item of services">
-     
-      <h3> {{ item.name }}</h3>
+  <div class="card" *ngFor="let item of services">
+    <h3> {{ item.name }}</h3>
+    <p> {{ item.description }}</p>
+    <p> {{ item.type }}</p>
 
-      <p> {{ item.description  }}</p>
-      <p> {{ item.type  }}</p>
-     
+    <button class="donate-button" *ngIf="selectedServiceId !== item.id" (click)="selectService(item.id)">Subscribe</button>
 
-     
-
-    <button class="donate-button" >Buy</button>
+    <div *ngIf="selectedServiceId === item.id">
+      <label>Duration (in years):</label>
+      <input type="number" [(ngModel)]="durationInYears" min="1" />
+      <button (click)="subscribeToService(item)">Confirm</button>
     </div>
   </div>
+</div>
+
 
   <h3 class="services-title"> Packages</h3>
   <div class="grid-container">
