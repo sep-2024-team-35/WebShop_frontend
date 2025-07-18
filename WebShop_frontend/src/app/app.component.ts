@@ -30,10 +30,6 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     HttpClientModule,
 
     JwtConfigModule,
-    
-
-
-
     NavbarComponent,
     HomeComponent,
     LoginComponent,
@@ -70,7 +66,8 @@ export class AppComponent {
   }
 
   private setupWebSocket(endpoint: string) {
-    const url = `ws://localhost:8080/${endpoint}`;
+  const token = localStorage.getItem('token'); 
+  const url = `wss://localhost:8080/${endpoint}?token=${token}`;
     const webSocket = new WebSocket(url);
 
     webSocket.onopen = () => {
@@ -79,7 +76,7 @@ export class AppComponent {
 
     webSocket.onclose = (event) => {
       console.log(`WebSocket connection to ${endpoint} closed. Reconnecting...`);
-      setTimeout(() => this.setupWebSocket(endpoint), 1000); // Ponovni pokušaj nakon 5 sekundi
+      setTimeout(() => this.setupWebSocket(endpoint), 3000); // Ponovni pokušaj nakon 5 sekundi
     };
 
     webSocket.onerror = (error) => {
