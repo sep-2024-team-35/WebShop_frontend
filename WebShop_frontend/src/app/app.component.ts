@@ -76,7 +76,7 @@ export class AppComponent {
   }
 
   private setupWebSocketSuccess(endpoint: string) {
-    const url = `ws://localhost:8080/${endpoint}`;
+    const url = `wss://localhost:8080/${endpoint}`;
     const webSocket = new WebSocket(url);
 
     webSocket.onopen = () => {
@@ -112,7 +112,7 @@ export class AppComponent {
   }
 
   private setupWebSocketError(endpoint: string) {
-    const url = `ws://localhost:8080/${endpoint}`;
+    const url = `wss://localhost:8080/${endpoint}`;
     const webSocket = new WebSocket(url);
 
     webSocket.onopen = () => {
@@ -143,7 +143,7 @@ export class AppComponent {
     } 
   }
   private setupWebSocketFailed(endpoint: string) {
-    const url = `ws://localhost:8080/${endpoint}`;
+    const url = `wss://localhost:8080/${endpoint}`;
     const webSocket = new WebSocket(url);
 
     webSocket.onopen = () => {
