@@ -21,6 +21,13 @@
       padding: 20px; /* Dodatni prostor oko kartica unutar kontejnera */
       height: 100%; /* Zauzimanje cele visine roditeljskog elementa (tj. tela) */
     }
+.grid-container-packages {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* Tačno 5 kolona */
+      gap: 10px; /* Razmak između kartica */
+      padding: 20px; /* Dodatni prostor oko kartica unutar kontejnera */
+      height: 100%; /* Zauzimanje cele visine roditeljskog elementa (tj. tela) */
+    }
     .services-title{
         text-align: center;
         font-size: xx-large;
@@ -28,6 +35,15 @@
 
     }
     .card {
+      margin-top: 20px;
+      background-color:  white;
+      border-radius: 10px; /* Zaobljeni uglovi */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Blaga senka za efekt dubine */
+      padding: 20px; /* Unutrašnji prostor unutar kartice */
+      max-width: 100%; /* Maksimalna širina kartice */
+      
+    }
+.package-card {
       margin-top: 20px;
       background-color:  white;
       border-radius: 10px; /* Zaobljeni uglovi */

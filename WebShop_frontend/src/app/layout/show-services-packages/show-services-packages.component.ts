@@ -4,7 +4,7 @@ import { ServicesPackagesService } from '../../service/servicesAndPackages/servi
 import { Service } from '../../model/service.model';
 import { Package } from '../../model/package.model';
 import { CommonModule, NgFor } from '@angular/common';
-import { PaymentRequest } from '../../model/paymentRequest.model';
+import { PackagePaymentRequest } from '../../model/paymentRequest.model';
 import { FormsModule, NgModel } from '@angular/forms'; 
 import { SubscriptionRequest } from '../../model/subscription';
 @Component({
@@ -24,11 +24,9 @@ export class ShowServicesPackagesComponent {
   role:String=''
   services : Service[]=[]
   packages: Package[]=[]
-  requestPayment: PaymentRequest={
+  requestPayment: PackagePaymentRequest={
     userid:0,
-    packageid:0,
-    price:0,
-    type:''
+    packageid:0
   }
   userId!: number
 
@@ -76,10 +74,9 @@ durationInYears: number | null = null;
  
 
 
-  buyPackage(packageId:number,price:number){
+  buyPackage(packageId:number){
     this.requestPayment.userid= this.authService.getUserId()
     this.requestPayment.packageid=packageId
-    this.requestPayment.price=price
     console.log(this.requestPayment)
     this.servicesPackagesService.buyPackage(this.requestPayment).subscribe({
       next:(response)=>{
@@ -91,29 +88,6 @@ durationInYears: number | null = null;
     })
   
   }
-
-  togglePaymentOptions(packageId: number) {
-    // Postavlja trenutno izabrani paket, ili poništava izbor
-    this.selectedPackageId = this.selectedPackageId === packageId ? null : packageId;
-  }
-
-  confirmPayment(packageId: number,price:number, paymentMethod: string) {
-    this.requestPayment.userid= this.authService.getUserId()
-    this.requestPayment.packageid=packageId
-    this.requestPayment.price=price
-    this.requestPayment.type=paymentMethod
-    console.log(this.requestPayment)
-    this.servicesPackagesService.buyPackage(this.requestPayment).subscribe({
-      next:(response)=>{
-       console.log('uspjesno')
-       this.selectedPackageId = null;
-      },
-      error:(err:any)=>{
-        console.log(err)
-      }
-    })
-  }
-
   
 
 selectService(serviceId: number): void {

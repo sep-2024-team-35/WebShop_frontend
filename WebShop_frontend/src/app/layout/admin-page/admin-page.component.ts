@@ -22,9 +22,6 @@ export class AdminPageComponent {
     this.loadPaymentOptions();
   }
 
-  onButtonClick(): void {
-    this.paymentOptionService.subscribe();
-  }
 
   logout(): void {
     this.router.navigate(['/login']);

@@ -1,6 +1,4 @@
-export interface PaymentRequest{
+export interface PackagePaymentRequest{
     userid:number,
     packageid:number,
-    price:number,
-    type:String
 }
