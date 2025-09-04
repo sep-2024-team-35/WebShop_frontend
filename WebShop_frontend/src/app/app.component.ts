@@ -7,7 +7,6 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { LoginComponent } from './layout/login/login.component';
-import { HomeComponent } from './layout/home/home.component';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
@@ -16,7 +15,7 @@ import { TokenInterceptor } from './TokenInterceptor';
 import { JwtConfigModule } from './jwt-config.module';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { RegisterComponent } from './layout/register/register.component';
-import { ShowServicesPackagesComponent } from './servicesAndPackages/show-services-packages/show-services-packages.component';
+import { ShowServicesPackagesComponent } from './layout/show-services-packages/show-services-packages.component';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { ErrorComponent } from './layout/response/error/error.component';
 import { FailedComponent } from './layout/response/failed/failed.component';
@@ -33,7 +32,6 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
     JwtConfigModule,
     NavbarComponent,
-    HomeComponent,
     LoginComponent,
     RegisterComponent,
     ShowServicesPackagesComponent,
@@ -66,7 +64,7 @@ export class AppComponent {
   }
 
   initializeWebSockets(){
-    this.setupWebSocketSuccess("success")
+    this.setupWebSocket("success")
    // this.setupWebSocketError("error")
    // this.setupWebSocketFailed("failed")
   }

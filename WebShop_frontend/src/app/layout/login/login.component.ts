@@ -26,7 +26,7 @@ export class LoginComponent {
   user :LoginRequest={
    
     password:'',
-    email:'',
+    username:'',
   
   }
 
@@ -44,7 +44,7 @@ export class LoginComponent {
 
   login(){
 
-    this.user.email=this.userForm.value.username as string
+    this.user.username=this.userForm.value.username as string
     this.user.password=this.userForm.value.password as string
 
     this.authService.login(this.user).subscribe({
