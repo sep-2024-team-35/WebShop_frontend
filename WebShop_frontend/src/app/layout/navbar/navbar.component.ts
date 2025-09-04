@@ -30,4 +30,7 @@ export class NavbarComponent {
   login(){
     this.router.navigate(['login']);
   }
+    navigateToSubscriptions(){
+    this.router.navigate(['my-subscriptions']);
+  }
 }

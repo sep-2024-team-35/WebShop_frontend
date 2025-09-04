@@ -30,7 +30,8 @@ export class RegisterComponent {
     firstname:'',
     lastname:'',
     id:0,
-     role: 'CUSTOMER'
+    role: 'CUSTOMER',
+    username:''
   }
 
   onSubmit(){

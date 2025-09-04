@@ -1,0 +1,33 @@
+<div class="subscriptions-container">
+  <h2>My Subscriptions</h2>
+
+  <div *ngIf="subscriptions.length === 0">
+    <p>No successful subscriptions found.</p>
+  </div>
+
+  <table *ngIf="subscriptions.length > 0" border="1" cellpadding="8">
+    <thead>
+      <tr>
+        <th>Service Name</th>
+        <th>Price</th>
+        <th>Start Date</th>
+        <th>Duration (Years)</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sub of subscriptions">
+        <td>{{ sub.serviceDTO.name }}</td>
+        <td>{{ sub.serviceDTO.price }}</td>
+        <td>{{ sub.startDate | date:'short' }}</td>
+        <td>{{ sub.durationInYears }}</td>
+        <td>{{ sub.status }}</td>
+          <td>
+          <button (click)="cancelSubscription(sub)">Cancel</button>
+          <button (click)="extendSubscription(sub)">Extend</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
