@@ -7,6 +7,7 @@ import { Package } from '../../model/package.model';
 import { PackagePaymentRequest } from '../../model/paymentRequest.model';
 import { SubscriptionRequest } from '../../model/subscription';
 import { SubscriptionDto } from '../../model/subscriptionDto.model';
+import { BuyPackageReposne } from '../../model/buyPackageResponse.model';
 
 @Injectable({
   providedIn: 'root'
@@ -39,15 +40,14 @@ export class ServicesPackagesService {
     return this.http.get<Package[]>(this.apiUrl + 'packages',{headers});
   }
 
-  buyPackage(request:PackagePaymentRequest){
+  buyPackage(request:PackagePaymentRequest):Observable<BuyPackageReposne>{
     const token = localStorage.getItem('token')
-    console.log(request)
-    console.log(token)
     const headers = new HttpHeaders({
       Authorization: 'Bearer ' + token,
       'Content-Type': 'application/json',
     });
-    return this.http.post(this.apiUrl + 'packages/buy',request,{headers});
+    console.log("U servisu: ",request);
+    return this.http.post<BuyPackageReposne>(this.apiUrl + 'packages/buy',request,{headers});
   }
 
   subscribeToService(request:SubscriptionRequest){

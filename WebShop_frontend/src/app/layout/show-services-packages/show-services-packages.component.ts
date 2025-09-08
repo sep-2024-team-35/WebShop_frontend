@@ -25,8 +25,8 @@ export class ShowServicesPackagesComponent {
   services : Service[]=[]
   packages: Package[]=[]
   requestPayment: PackagePaymentRequest={
-    userid:0,
-    packageid:0
+    userId:0,
+    packageId:0
   }
   userId!: number
 
@@ -74,21 +74,29 @@ durationInYears: number | null = null;
  
 
 
-  buyPackage(packageId:number){
-    this.requestPayment.userid= this.authService.getUserId()
-    this.requestPayment.packageid=packageId
-    console.log(this.requestPayment)
+  buyPackage(packageId: number) {
+    this.requestPayment.userId = this.authService.getUserId();
+    this.requestPayment.packageId = packageId;
+
+    console.log("payment request: ", this.requestPayment)
     this.servicesPackagesService.buyPackage(this.requestPayment).subscribe({
-      next:(response)=>{
-       console.log('uspjesno')
+      next: (response) => {
+        // Provjeri je li odgovor sadrži URL
+        if (response && response.redirectUrl) {
+          // Preusmjeri korisnika na PSP stranicu
+          console.log("Dobijenni odg na front", response)
+          window.location.href = response.redirectUrl;
+        } else {
+          // Ako URL nedostaje, logiraj grešku
+          console.error('URL za plaćanje nije pronađen u odgovoru.');
+        }
       },
-      error:(err:any)=>{
-        console.log(err)
+      error: (err: any) => {
+        console.error('Greška pri pokušaju kupovine:', err);
+        // Ovdje možeš prikazati poruku korisniku, npr. pomoću snackbara ili modala
       }
-    })
-  
+    });
   }
-  
 
 selectService(serviceId: number): void {
   this.selectedServiceId = serviceId;

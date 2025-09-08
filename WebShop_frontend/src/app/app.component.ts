@@ -71,7 +71,7 @@ export class AppComponent {
 
   private setupWebSocket(endpoint: string) {
   const token = localStorage.getItem('token'); 
-  const url = `wss://localhost:8080/${endpoint}?token=${token}`;
+  const url = `ws://localhost:8080/${endpoint}?token=${token}`;
     const webSocket = new WebSocket(url);
 
     webSocket.onopen = () => {

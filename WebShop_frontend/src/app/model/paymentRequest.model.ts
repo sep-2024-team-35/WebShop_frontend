@@ -1,4 +1,4 @@
 export interface PackagePaymentRequest{
-    userid:number,
-    packageid:number,
+    userId:number,
+    packageId:number,
 }
