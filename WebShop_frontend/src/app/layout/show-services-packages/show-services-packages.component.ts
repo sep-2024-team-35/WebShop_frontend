@@ -115,7 +115,14 @@ subscribeToService(service: any): void {
     console.log("POSLATIII subbb",this.subscription)
       this.servicesPackagesService.subscribeToService(this.subscription).subscribe({
       next:(response)=>{
-       console.log('uspjesno')
+        if (response && response.redirectUrl) {
+          // Preusmjeri korisnika na PSP stranicu
+          console.log("Dobijenni odg na front", response)
+          window.location.href = response.redirectUrl;
+        } else {
+          // Ako URL nedostaje, logiraj grešku
+          console.error('URL za plaćanje nije pronađen u odgovoru.');
+        }
       },
       error:(err:any)=>{
         console.log(err)

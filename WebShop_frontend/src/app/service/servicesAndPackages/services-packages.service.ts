@@ -47,17 +47,17 @@ export class ServicesPackagesService {
       'Content-Type': 'application/json',
     });
     console.log("U servisu: ",request);
-    return this.http.post<BuyPackageReposne>(this.apiUrl + 'packages/buy',request,{headers});
+    return this.http.post<BuyPackageReposne>(this.apiUrl + 'packages/buy-package',request,{headers});
   }
 
-  subscribeToService(request:SubscriptionRequest){
+  subscribeToService(request:SubscriptionRequest):Observable<BuyPackageReposne>{
     const token = localStorage.getItem('token')
     console.log(token)
     const headers = new HttpHeaders({
       Authorization: 'Bearer ' + token,
       'Content-Type': 'application/json',
     });
-    return this.http.post(this.apiUrl + 'subscriptions/subscribe',request,{headers});
+    return this.http.post<BuyPackageReposne>(this.apiUrl + 'services/buy-service',request,{headers});
   }
 
   getUserSubscriptions(userId: number): Observable<SubscriptionDto[]> {
