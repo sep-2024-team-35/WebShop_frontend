@@ -5,7 +5,8 @@ import { Service } from "./service.model";
     startDate: string;
     durationInYears: number;
     status: SubscriptionStatus;
-    serviceDTO: Service
+    serviceDTO: Service,
+    duePayment:boolean
   }
   export enum SubscriptionStatus {
   CREATED = 'CREATED',

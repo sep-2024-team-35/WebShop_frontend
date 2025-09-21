@@ -26,6 +26,8 @@
           <td>
           <button (click)="cancelSubscription(sub)">Cancel</button>
           <button (click)="extendSubscription(sub)">Extend</button>
+          <button *ngIf="sub.duePayment" (click)="payBill(sub)">Pay this month</button>
+
         </td>
       </tr>
     </tbody>
